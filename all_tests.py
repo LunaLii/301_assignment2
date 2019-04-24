@@ -10,7 +10,6 @@ def doc_test():
 def unit_test():
     the_suite = unittest.TestSuite()
     the_suite.addTest(unittest.makeSuite(ValidatorUnitTest))
-
     return the_suite
 
 

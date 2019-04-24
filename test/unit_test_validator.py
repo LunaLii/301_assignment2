@@ -47,6 +47,7 @@ class ValidatorUnitTest(unittest.TestCase):
         result = self.validator.validate_method_name("1test")
         self.assertFalse(result, "valid method name")
 
+
     def test_validate_method_name_is_false_2(self):
         result = self.validator.validate_method_name("!$test")
         self.assertFalse(result, "valid method name")
