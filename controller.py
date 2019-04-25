@@ -1,10 +1,10 @@
-from file_reader import PrintClass
+from file_reader import FileReader
 from chart_maker import ChartMaker
 from os import path
 
 
 class Controller:
-    file = PrintClass()
+    file = FileReader()
     chart = ChartMaker()
 
     @staticmethod
