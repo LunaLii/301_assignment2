@@ -1,0 +1,76 @@
+import unittest
+from file_reader import PrintClass
+
+
+class FilerUnitTest(unittest.TestCase):
+    def setUp(self):
+        self.file = PrintClass()
+
+    def test_get_method_name(self):
+        class_content = self.file.class_handler("test/uml.docx")
+        actual_one = self.file.get_methods(class_content[0])
+        expected_one = ["add_toy", "get_toys"]
+        actual_two = self.file.get_methods(class_content[1])
+        expected_two = ["__str__"]
+        self.assertEqual(expected_one, actual_one, "cannot get method name")
+        self.assertEqual(expected_two, actual_two, "cannot get method name")
+
+    def test_get_class_name(self):
+        class_content = self.file.class_handler("test/uml.txt")
+        actual_one = self.file.get_class_name(class_content[0])
+        expected_one = ["ToyBox"]
+        actual_two = self.file.get_class_name(class_content[1])
+        expected_two = ["Toy"]
+        self.assertEqual(expected_one, actual_one, "cannot get class name")
+        self.assertEqual(expected_two, actual_two, "cannot get class name")
+
+    def test_get_attribute_name(self):
+        class_content = self.file.class_handler("uml.docx")
+        actual_one = self.file.get_attributes(class_content[0])
+        expected_one = ["number", "allMyToys"]
+        actual_two = self.file.get_attributes(class_content[1])
+        expected_two = ["name", "color", "price"]
+        self.assertEqual(expected_one, actual_one, "cannot get attribute name")
+        self.assertEqual(expected_two, actual_two, "cannot get attribute name")
+
+    def test_get_relationship_one_composition(self):
+        self.file.class_handler("test_relationship.txt")
+        self.file.get_relationship("ClassA")
+        actual = self.file.compo_1_to_1
+        expected = "ClassB"
+        self.assertEqual(expected, actual, "cannot get 1 to 1 composition")
+
+    def test_get_relationship_many_composition(self):
+        self.file.class_handler("test_relationship.txt")
+        self.file.get_relationship("ToyBox")
+        actual = self.file.compo_1_to_many
+        expected = "Toy"
+        self.assertEqual(expected, actual, "cannot get 1 to many composition")
+
+    def test_get_relationship_many_aggregation(self):
+        self.file.class_handler("test_relationship.txt")
+        self.file.get_relationship("ClassC")
+        actual = self.file.aggr_1_to_many
+        expected = "ClassD"
+        self.assertEqual(expected, actual, "cannot get 1 to many aggregation")
+
+    def test_get_relationship_one_aggregation(self):
+        self.file.class_handler("test_relationship.txt")
+        self.file.get_relationship("ClassE")
+        actual = self.file.aggr_1_to_1
+        expected = "ClassF"
+        self.assertEqual(expected, actual, "cannot get 1 to 1 aggregation")
+
+    def test_get_relationship_dependency(self):
+        self.file.class_handler("test_relationship.txt")
+        self.file.get_relationship("ToyBox")
+        actual = self.file.dependency_list
+        expected = "Controller"
+        self.assertEqual(expected, actual, "cannot get dependency")
+
+    def test_get_relationship_association(self):
+        self.file.class_handler("test_relationship.txt")
+        self.file.get_relationship("Controller")
+        actual = self.file.aggr_1_to_many
+        expected = "Command"
+        self.assertEqual(expected, actual, "cannot get association")

@@ -1,0 +1,17 @@
+@startuml
+ToyBox *-- Toy
+
+class ToyBox {
+    number : int
+    allMyToys : List
+    add_toy()
+    get_toys()
+}
+
+class Toy {
+    name : String
+    color : String
+    price : int
+    __str__()
+}
+@enduml

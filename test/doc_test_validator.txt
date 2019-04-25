@@ -1,0 +1,39 @@
+>>> from validator import Validator
+>>> Validator.validate_class_name("ClassBuilder")
+True
+>>> Validator.validate_class_name("ClassName123")
+True
+>>> Validator.validate_class_name("classBuilder")
+False
+>>> Validator.validate_class_name("C!#Name")
+False
+>>> Validator.validate_class_name("ClassName>")
+False
+>>> Validator.validate_class_name("1ClassName>")
+False
+>>> Validator.validate_class_name("-+ClassName>")
+False
+
+>>> Validator.validate_attribute_name("Test")
+False
+>>> Validator.validate_attribute_name("pass")
+False
+>>> Validator.validate_attribute_name("test")
+True
+>>> Validator.validate_attribute_name("!$%test")
+False
+
+>>> Validator.validate_method_name("Name")
+False
+>>> Validator.validate_method_name("method_name")
+True
+>>> Validator.validate_method_name("get_A")
+False
+>>> Validator.validate_method_name("get")
+True
+>>> Validator.validate_method_name("_get")
+True
+>>> Validator.validate_method_name("1_get")
+False
+>>> Validator.validate_method_name("get1")
+True

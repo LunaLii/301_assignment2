@@ -1,6 +1,7 @@
 import unittest
 from validator import Validator
 
+
 class ValidatorUnitTest(unittest.TestCase):
     def setUp(self):
         self.validator = Validator()

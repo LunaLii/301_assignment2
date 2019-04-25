@@ -1,0 +1,22 @@
+@startuml
+Controller <-- Command
+ToyBox <.. Controller
+ToyBox "1" *-- "many" Toy
+ClassA *-- ClassB
+ClassC "1" o-- "many" ClassD
+ClassE o-- ClassF
+
+class ToyBox {
+    number : int
+    allMyToys : List
+    add_toy()
+    get_toys()
+}
+
+class Toy {
+    name : String
+    color : String
+    price : int
+    __str__()
+}
+@enduml

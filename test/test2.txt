@@ -1,0 +1,10 @@
+@startuml
+ToyBox *-- Toy
+
+class ToyBox {
+    name : String
+}
+
+class Toy {
+}
+@enduml

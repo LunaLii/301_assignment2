@@ -20,45 +20,6 @@ class TestDataExtraction(unittest.TestCase):
         self.assertEqual(self.test_class.get_class_name(list_2), '')
         self.assertIsNone(self.test_class.get_class_name(list_3))
 
-    def test_validate_attribute_name_true(self):
-        self.assertTrue(self.validator.validate_attribute_name("attribute"))
-        self.assertTrue(self.validator.validate_attribute_name("clement"))
-
-    def test_validate_attribute_name_false(self):
-        self.assertFalse(self.validator.validate_attribute_name("<clement"))
-        self.assertFalse(self.validator.validate_attribute_name("??i"))
-        self.assertFalse(self.validator.validate_attribute_name("break"))
-        self.assertFalse(self.validator.validate_attribute_name("pass"))
-        self.assertFalse(self.validator.validate_attribute_name(42))
-        self.assertFalse(self.validator.validate_attribute_name(3.14))
-        self.assertFalse(self.validator.validate_attribute_name(
-            '--------------------------------------'
-            '-------------------------------------'
-        ))
-
-    # Luna
-    def test_validate_class_name_is_true(self):
-        result_1 = self.validator.validate_class_name("Name")
-        result_2 = self.validator.validate_class_name("ClassName")
-        self.assertTrue(result_1, "invalid class name")
-        self.assertTrue(result_2, "invalid class name")
-
-    def test_validate_class_name_using_special_char(self):
-        result = self.validator.validate_class_name("Name$%^&")
-        self.assertFalse(result, "valid class name")
-
-    def test_validate_class_name_using_lower(self):
-        result = self.validator.validate_class_name("name")
-        self.assertFalse(result, "valid class name")
-
-    def test_validate_class_name_start_with_num(self):
-        result = self.validator.validate_class_name("123Name")
-        self.assertFalse(result, "valid class name")
-
-    def test_validate_class_name_start_with_char(self):
-        result = self.validator.validate_class_name("$%^_+Name")
-        self.assertFalse(result, "valid class name")
-
     def test_read_word_file(self):
         actual = self.test_class.read_word_file("test2.docx")
         expect = ["@startuml\n", "ToyBox *-- Toy\n", "\n", "class ToyBox {\n",
@@ -97,39 +58,6 @@ class TestDataExtraction(unittest.TestCase):
         expected_two = ["__str__"]
         self.assertEqual(expected_one, actual_one, "cannot get method name")
         self.assertEqual(expected_two, actual_two, "cannot get method name")
-
-    # Rajan
-    def test_validate_method_name_is_false(self):
-        validator = Validator()
-        result_1 = validator.validate_method_name("Get")
-        result_2 = validator.validate_method_name("1_get")
-        result_3 = validator.validate_method_name("get_Name")
-        self.assertFalse(result_1)
-        self.assertFalse(result_2)
-        self.assertFalse(result_3)
-
-    def test_validate_method_name_is_true2(self):
-        validator = Validator()
-        result_1 = validator.validate_method_name("_get")
-        result_2 = validator.validate_method_name("get1")
-        self.assertTrue(result_1)
-        self.assertTrue(result_2)
-
-    def test_validate_method_name_is_true(self):
-        validator = Validator()
-        result_1 = validator.validate_method_name("method_name")
-        result_2 = validator.validate_method_name("get")
-        self.assertTrue(result_1)
-        self.assertTrue(result_2)
-
-    def test_validate_method_name_is_false2(self):
-        validator = Validator()
-        result_1 = validator.validate_method_name("Name")
-        result_2 = validator.validate_method_name("get_Name")
-        result_3 = validator.validate_method_name("1_get")
-        self.assertFalse(result_1)
-        self.assertFalse(result_2)
-        self.assertFalse(result_3)
 
 
 if __name__ == '__main__':

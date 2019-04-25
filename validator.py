@@ -6,48 +6,13 @@ class Validator:
     # Luna
     @staticmethod
     def validate_class_name(class_name):
-        """
-        >>> Validator.validate_class_name("ClassBuilder")
-        True
-        >>> Validator.validate_class_name("ClassName123")
-        True
-        >>> Validator.validate_class_name("classBuilder")
-        False
-        >>> Validator.validate_class_name("C!#Name")
-        False
-        >>> Validator.validate_class_name("ClassName>")
-        False
-        >>> Validator.validate_class_name("1ClassName>")
-        False
-        >>> Validator.validate_class_name("-+ClassName>")
-        False
-        """
+
         if class_name[0].isupper() and match("^[A-Za-z0-9]*$", class_name):
             return True
         return False
 
     @staticmethod
     def validate_attribute_name(name):
-        """
-        >>> Validator.validate_attribute_name("Name")
-        False
-        >>> Validator.validate_attribute_name("break")
-        False
-        >>> Validator.validate_attribute_name("a")
-        False
-        >>> Validator.validate_attribute_name(1234)
-        False
-        >>> Validator.validate_attribute_name("attribute")
-        True
-        >>> Validator.validate_attribute_name("Sometimes" \
-                "python programming can be hard")
-        False
-        >>> Validator.validate_attribute_name("/&*(")
-        False
-        """
-
-        # below is doctest
-
         regex = compile('[@!#$%^&*()<>?/|}{~:A-Z]')
         res = [
             'and',
