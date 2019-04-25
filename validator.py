@@ -3,10 +3,8 @@ from re import compile
 
 
 class Validator:
-    # Luna
     @staticmethod
     def validate_class_name(class_name):
-
         if class_name[0].isupper() and match("^[A-Za-z0-9]*$", class_name):
             return True
         return False
@@ -50,29 +48,8 @@ class Validator:
         else:
             return True
 
-    # Rajan
-
     @staticmethod
     def validate_method_name(name):
-        """
-        >>> Validator.validate_method_name("Name")
-        False
-        >>> Validator.validate_method_name("method_name")
-        True
-        >>> Validator.validate_method_name("get_A")
-        False
-        >>> Validator.validate_method_name("get")
-        True
-        >>> Validator.validate_method_name("_get")
-        True
-        >>> Validator.validate_method_name("1_get")
-        False
-        >>> Validator.validate_method_name("get1")
-        True
-        """
-
-        # below is doctest
-
         regex = compile('[@!#$%^&*()<>?/|}{~:A-Z]')
         if regex.search(name) is not None or name[0].isdigit():
             return False

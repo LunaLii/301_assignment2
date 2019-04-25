@@ -9,16 +9,6 @@ class Controller:
 
     @staticmethod
     def load_file(infile):
-        r"""
-        >>> Controller.load_file("C:\\Users\Luna\ICT\python\\uml.csv")
-        Incorrect file type, please check with help load
-        >>> Controller.load_file("test.docx")
-        True
-        >>> Controller.load_file("test.txt")
-        True
-        >>> Controller.load_file("C:\\Users\Luna\ICT\\uml.docx")
-        File is not found
-        """
         try:
             if path.isfile(infile):
                 if ".txt" in infile[-4:] or ".docx" in infile[-5:]:
