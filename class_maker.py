@@ -33,5 +33,16 @@ class ClassMaker:
             second_c_name = temp_relationship[-1]
             relationship_type = ''.join(temp_relationship[1:-1])
             if first_c_name == self.name:
-                the_relationship = RelationshipMaker(first_c_name,second_c_name,relationship_type)
+                the_relationship = RelationshipMaker(second_c_name,relationship_type)
                 self.all_my_relationships.append(the_relationship)
+
+    def print_class(self):
+        result = "class " + self.name + ":"
+        result += "\n" + "    def __init__ (self):"
+        for x in self.all_my_attributes:
+            result += str(x) + "\n"
+        result += "\n"
+        for x in self.all_my_methods:
+            result += str(x)
+        result += "\n\n"
+        return result

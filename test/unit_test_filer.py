@@ -39,14 +39,21 @@ class FilerUnitTest(unittest.TestCase):
         expected = ["ToyBox", "Toy"]
         self.assertEqual(expected, actual, "cannot get class name")
 
-    # def test_get_attribute_name(self):
-    #     class_content = self.file.class_handler("test/uml.docx")
-    #     actual_one = self.file.get_attributes(class_content[0])
-    #     expected_one = ["number", "allMyToys"]
-    #     actual_two = self.file.get_attributes(class_content[1])
-    #     expected_two = ["name", "color", "price"]
-    #     self.assertEqual(expected_one, actual_one, "cannot get attribute name")
-    #     self.assertEqual(expected_two, actual_two, "cannot get attribute name")
+    def test_get_attribute_name(self):
+        self.file.class_handler("test/uml.docx")
+        self.file.find_classes()
+        actual_one = []
+        class_one = self.file.all_my_classes[0]
+        for i in class_one.all_my_attributes:
+            actual_one.append(i.name)
+        expected_one = ["number", "allMyToys"]
+        class_two = self.file.all_my_classes[1]
+        actual_two = []
+        for i in class_two.all_my_attributes:
+            actual_two.append(i.name)
+        expected_two = ["name", "color", "price"]
+        self.assertEqual(expected_one, actual_one, "cannot get attribute name")
+        self.assertEqual(expected_two, actual_two, "cannot get attribute name")
     #
     # def test_get_relationship_one_composition(self):
     #     self.file.class_handler("test/test_relationship.txt")

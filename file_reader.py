@@ -73,11 +73,11 @@ class FileReader:
         return self.class_list
 
     def find_classes(self):
-        class_name = ""
-        relationships = []
-        attributes = []
-        methods = []
         for a_class in self.class_list:
+            class_name = ""
+            relationships = []
+            attributes = []
+            methods = []
             for item in a_class:
                 if "class" in item:
                     temp_class = item[:item.index(" {")]
@@ -94,7 +94,10 @@ class FileReader:
     def add_class(self, class_name, attributes, methods, relationships):
         new_class = ClassMaker(class_name, attributes, methods, relationships)
         new_class.add_class_attributes()
+        new_class.add_class_methods()
+        new_class.add_class_relationships()
         self.all_my_classes.append(new_class)
+
 
     # Clement
     # def get_class_name(self, class_array):
