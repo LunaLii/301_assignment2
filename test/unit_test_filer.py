@@ -6,6 +6,8 @@ from class_maker import ClassMaker
 class FilerUnitTest(unittest.TestCase):
     def setUp(self):
         self.file = FileReader()
+        self.file.class_handler("test/uml.docx")
+        self.file.find_classes()
 
     def test_read_word_file(self):
         actual = self.file.read_word_file("test/test2.docx")
@@ -21,18 +23,21 @@ class FilerUnitTest(unittest.TestCase):
                   "@enduml\n"]
         self.assertEqual(expect, actual, "cannot read txt file")
 
-    # def test_get_method_name(self):
-    #     class_content = self.file.class_handler("test/uml.txt")
-    #     actual_one = self.file.get_methods(class_content[0])
-    #     expected_one = ["add_toy", "get_toys"]
-    #     actual_two = self.file.get_methods(class_content[1])
-    #     expected_two = ["__str__"]
-    #     self.assertEqual(expected_one, actual_one, "cannot get method name")
-    #     self.assertEqual(expected_two, actual_two, "cannot get method name")
+    def test_get_method_name(self):
+        actual_one = []
+        class_one = self.file.all_my_classes[0]
+        for i in class_one.all_my_methods:
+            actual_one.append(i.name)
+        expected_one = ["add_toy", "get_toys"]
+        class_two = self.file.all_my_classes[1]
+        actual_two = []
+        for i in class_two.all_my_methods:
+            actual_two.append(i.name)
+        expected_two = ["__str__"]
+        self.assertEqual(expected_one, actual_one, "cannot get method name")
+        self.assertEqual(expected_two, actual_two, "cannot get method name")
 
     def test_get_class_name(self):
-        self.file.class_handler("test/uml.txt")
-        self.file.find_classes()
         actual = []
         for x in self.file.all_my_classes:
             actual.append(x.name)
@@ -40,8 +45,6 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected, actual, "cannot get class name")
 
     def test_get_attribute_name(self):
-        self.file.class_handler("test/uml.docx")
-        self.file.find_classes()
         actual_one = []
         class_one = self.file.all_my_classes[0]
         for i in class_one.all_my_attributes:
