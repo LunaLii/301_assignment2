@@ -19,8 +19,8 @@ class RelationshipMaker:
                 self.association_list.append(self.class_name)
             if self.relationship_type == "<..":
                 self.dependency_list.append(self.class_name)
-        if len(self.relationship_type) == 14:
-            if self.relationship_type == '"1" *-- "many"':
+        elif len(self.relationship_type) > 3:
+            if self.relationship_type == '"1"*--"many"':
                 self.compo_1_to_many.append(self.class_name)
-            if self.relationship_type == '"1" o-- "many"':
+            if self.relationship_type == '"1"o--"many"':
                 self.aggr_1_to_many.append(self.class_name)

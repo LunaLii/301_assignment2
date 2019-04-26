@@ -2,10 +2,13 @@
 Controller <-- Command
 ToyBox <.. Controller
 ToyBox "1" *-- "many" Toy
-ClassA *-- ClassB
-ClassC "1" o-- "many" ClassD
-ClassE o-- ClassF
+ToyBox *-- ClassB
+ToyBox "1" o-- "many" ClassD
+ToyBox o-- ClassF
 
+class Controller {
+
+}
 class ToyBox {
     number : int
     allMyToys : List

@@ -30,7 +30,7 @@ class ClassMaker:
         for a_relationship in self.relationships:
             temp_relationship = a_relationship.split(" ")
             first_c_name = temp_relationship[0]
-            second_c_name = temp_relationship[-1]
+            second_c_name = temp_relationship[-1].replace("\n","")
             relationship_type = ''.join(temp_relationship[1:-1])
             if first_c_name == self.name:
                 the_relationship = RelationshipMaker(second_c_name,relationship_type)
