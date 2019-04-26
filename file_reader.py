@@ -1,6 +1,7 @@
 from docx import Document
 from validator import Validator
 import os.path
+from class_maker import ClassMaker
 
 
 class FileReader:
@@ -72,28 +73,28 @@ class FileReader:
         return self.class_list
 
     def find_classes(self):
+        class_name = ""
+        relationships = []
+        attributes = []
+        methods = []
         for a_class in self.class_list:
-            class_name = ""
-            attributes = []
-            methods = []
-            relationships = []
             for item in a_class:
                 if "class" in item:
                     temp_class = item[:item.index(" {")]
                     class_name = temp_class.split(' ')[1]
                 if ":" in item and "(" not in item:
-                    result = item.split(' ')
-                    attributes.append(result[4])
+                    attributes.append(item)
                 if "(" in item:
-                    methods.append(item[:item.index("\n") - 2].strip())
-        for a_relationship in self.relationship_list:
-            if a_relationship.find(class_name) != -1:
-                relationships.append(a_relationship)
-        self.add_class(class_name, attributes, methods, relationships)
+                    methods.append(item)
+            for a_relationship in self.relationship_list:
+                if a_relationship.find(class_name) != -1:
+                    relationships.append(a_relationship)
+            self.add_class(class_name, attributes, methods, relationships)
 
     def add_class(self, class_name, attributes, methods, relationships):
         new_class = ClassMaker(class_name, attributes, methods, relationships)
-        new_class
+        new_class.add_class_attributes()
+        self.all_my_classes.append(new_class)
 
     # Clement
     # def get_class_name(self, class_array):
@@ -208,3 +209,7 @@ class FileReader:
     #     method_num = sum(self.num_all_method_list)
     #     all_num = [class_num, attribute_num, method_num]
     #     return all_num
+
+
+# c = FileReader()
+# print(c.class_handler("test/uml.txt"))

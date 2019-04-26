@@ -10,9 +10,28 @@ class ClassMaker:
         self.methods = new_methods
         self.relationships = new_relationships
         self.all_my_attributes_name = []
-        self.all_my_attributes = AttributeMaker
+        self.all_my_attributes = []
         self.all_my_methods = []
         self.all_my_relationships = []
 
     def add_class_attributes(self):
-        pass
+        for an_attribute in self.attributes:
+            new_a_name = an_attribute.split(" ")[4]
+            new_attribute = AttributeMaker(new_a_name)
+            self.all_my_attributes.append(new_attribute)
+
+    def add_class_methods(self):
+        for a_method in self.methods:
+            new_m_name = a_method[:a_method.index("\n")-2].strip()
+            new_method = MethodMaker(new_m_name)
+            self.all_my_methods.append(new_method)
+
+    def add_class_relationships(self):
+        for a_relationship in self.relationships:
+            temp_relationship = a_relationship.split(" ")
+            first_c_name = temp_relationship[0]
+            second_c_name = temp_relationship[-1]
+            relationship_type = ''.join(temp_relationship[1:-1])
+            if first_c_name == self.name:
+                the_relationship = RelationshipMaker(first_c_name,second_c_name,relationship_type)
+                self.all_my_relationships.append(the_relationship)
