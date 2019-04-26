@@ -98,7 +98,16 @@ class FileReader:
         new_class.add_class_relationships()
         self.all_my_classes.append(new_class)
 
-
+    def output_file(self, file):
+        for x in self.all_my_classes:
+            # x.save_file()
+            file_name = file + x.name + ".py"
+            with open(file_name, "w") as output:
+                output.write(x.print_class())
+c = FileReader()
+c.class_handler("test\\uml.txt")
+c.find_classes()
+c.output_file("C:\\Users\Luna\ICT\python_new\\")
     # Clement
     # def get_class_name(self, class_array):
     #     for listItem in class_array:

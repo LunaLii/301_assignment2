@@ -1,5 +1,5 @@
 @startuml
-ToyBox *-- Toy
+ToyBox "1" *-- "many" Toy
 
 class ToyBox {
     number : int

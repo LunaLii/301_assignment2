@@ -24,3 +24,17 @@ class RelationshipMaker:
                 self.compo_1_to_many.append(self.class_name)
             if self.relationship_type == '"1"o--"many"':
                 self.aggr_1_to_many.append(self.class_name)
+
+    def __str__(self):
+        self.identify_relationship_type()
+        result = ""
+        if self.compo_1_to_1 is not None:
+            for i in self.compo_1_to_1:
+                result += "        # self. my_" + i.lower() + " -> " + i\
+                        + "\n" + "        self." + i.lower() + " = " + "None \n"
+        if self.compo_1_to_many is not None:
+            for i in self.compo_1_to_many:
+                result += "        # self. my_" + i.lower() + ": list" + " -> "\
+                          + i + "\n" + "        self." + i.lower() + " = "\
+                          + "None\n"
+        return  result

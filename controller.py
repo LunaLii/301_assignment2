@@ -27,7 +27,7 @@ class Controller:
         except Exception as e:
             print(e)
 
-    def save_file(self):
+    def save_file(self, file_location):
         try:
             if path.exists(file_location):
                 self.file.output_file(file_location)

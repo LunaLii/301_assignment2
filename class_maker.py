@@ -38,8 +38,10 @@ class ClassMaker:
 
     def print_class(self):
         result = "class " + self.name + ":"
-        result += "\n" + "    def __init__ (self):"
+        result += "\n" + "    def __init__ (self):\n"
         for x in self.all_my_attributes:
+            result += str(x) + "\n"
+        for x in self.all_my_relationships:
             result += str(x) + "\n"
         result += "\n"
         for x in self.all_my_methods:
