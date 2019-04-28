@@ -13,6 +13,7 @@ class Controller:
             if path.isfile(infile):
                 if ".txt" in infile[-4:] or ".docx" in infile[-5:]:
                     Controller.file.class_handler(infile)
+                    Controller.file.find_classes()
                     return True
                 else:
                     raise NameError
@@ -38,6 +39,7 @@ class Controller:
             print("No such directory")
         except Exception as e:
             print(e)
+
 
     # def create_bar_chart(self):
     #     all_num = self.file.get_all_num()
