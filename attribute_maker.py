@@ -4,3 +4,6 @@ class AttributeMaker:
 
     def __str__(self):
         return '        self.' + self.name + ' = ' + self.name + '\n'
+
+    # def get_length(self):
+    #     return len(self.name)

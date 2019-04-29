@@ -9,15 +9,9 @@ class FileReader:
     def __init__(self):
         self.all_my_classes = []
         self.relationship_list = []
-        self.class_name_list = []
-        self.num_all_attribute_list = []
-        self.num_all_method_list = []
-        self.compo_1_to_1 = []
-        self.aggr_1_to_1 = []
-        self.compo_1_to_many = []
-        self.aggr_1_to_many = []
-        self.association_list = []
-        self.dependency_list = []
+        # self.class_name_list = []
+        # self.num_all_attribute_list = []
+        # self.num_all_method_list = []
         self.class_list = []
 
     # Luna: load data from .docx file
@@ -100,14 +94,26 @@ class FileReader:
 
     def output_file(self, file):
         for x in self.all_my_classes:
-            # x.save_file()
-            file_name = file + x.name + ".py"
-            with open(file_name, "w") as output:
-                output.write(x.print_class())
-c = FileReader()
-c.class_handler("test\\uml.txt")
-c.find_classes()
-c.output_file("C:\\Users\Luna\ICT\python_new\\")
+            if Validator.validate_class_name(x.name):
+                file_name = file + x.name + ".py"
+                with open(file_name, "w") as output:
+                    output.write(x.print_class())
+
+    def get_data(self):
+        class_num = len(self.all_my_classes)
+        attribute_num = 0
+        method_num = 0
+        for x in self.all_my_classes:
+            attribute_num += x.get_attribute_length()
+            method_num += x.get_method_length()
+        data = [class_num, attribute_num, method_num]
+        return data
+
+# c = FileReader()
+# c.class_handler("test\\uml.txt")
+# c.find_classes()
+# c.get()
+# c.output_file("C:\\Users\Luna\ICT\python_new\\")
     # Clement
     # def get_class_name(self, class_array):
     #     for listItem in class_array:

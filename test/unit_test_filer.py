@@ -6,7 +6,6 @@ class FilerUnitTest(unittest.TestCase):
     def setUp(self):
         self.file = FileReader()
 
-
     def test_read_word_file(self):
         actual = self.file.read_word_file("test/test2.docx")
         expect = ["@startuml\n", "ToyBox *-- Toy\n", "\n", "class ToyBox {\n",
@@ -127,3 +126,10 @@ class FilerUnitTest(unittest.TestCase):
             actual.append(i.association_list)
         expected = [["Command"]]
         self.assertEqual(expected, actual, "cannot get association")
+
+    def test_get_correct_data_for_chart(self):
+        self.file.class_handler("test/uml.docx")
+        self.file.find_classes()
+        actual = self.file.get_data()
+        expected = [2, 5, 3]
+        self.assertEqual(expected, actual, "cannot get the data")

@@ -33,28 +33,28 @@ class Command(Cmd):
 
     # Rajan
     # Change commands and options: Luna: /a; Rajan: /p; Clement: /l
-    # def do_display(self, option):
-    #     """
-    #     Syntax: display [/a | /p | /l]
-    #     Display bar chart, pie chart or line graph
-    #     :param option: /a: display bar chart
-    #                    /p: display pie chart
-    #                    /l: display line graph
-    #     :return: none
-    #     """
-    #     if option and option.strip():
-    #         if option == "/a":
-    #             if self.controller.create_bar_chart() is False:
-    #                 print("Please load PlantUML and then create the class "
-    #                       "files first")
-    #             else:
-    #                 self.controller.create_bar_chart()
-    #         elif option == "/p":
-    #             self.controller.create_pie_chart()
-    #         elif option == "/l":
-    #             self.controller.create_line_chart()
-    #     else:
-    #         print("please choose one")
+    def do_display(self, option):
+        """
+        Syntax: display [/a | /p | /l]
+        Display bar chart, pie chart or line graph
+        :param option: /a: display bar chart
+                       /p: display pie chart
+                       /l: display line graph
+        :return: none
+        """
+        if option and option.strip():
+            if option == "/a":
+                if self.controller.create_bar_chart() is False:
+                    print("Please load PlantUML and then create the class "
+                          "files first")
+                else:
+                    self.controller.create_bar_chart()
+            elif option == "/p":
+                self.controller.create_pie_chart()
+            elif option == "/l":
+                self.controller.create_line_chart()
+        else:
+            print("please choose one")
 
     def do_quit(self, line):
         print("Quitting ......")

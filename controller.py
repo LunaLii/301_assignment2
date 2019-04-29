@@ -40,21 +40,20 @@ class Controller:
         except Exception as e:
             print(e)
 
+    def create_bar_chart(self):
+        data = self.file.get_data()
+        if self.file.get_data() == [0, 0, 0]:
+            return False
+        else:
+            self.chart.create_bar_chart(data)
 
-    # def create_bar_chart(self):
-    #     all_num = self.file.get_all_num()
-    #     if all_num == [0, 0, 0]:
-    #         return False
-    #     else:
-    #         self.chart.create_bar_chart(all_num)
-    #
-    # def create_pie_chart(self):
-    #     all_num = self.file.get_all_num()
-    #     self.chart.create_pie_chart(all_num)
-    #
-    # def create_line_chart(self):
-    #     all_num = self.file.get_all_num()
-    #     self.chart.create_line_graph(all_num)
+    def create_pie_chart(self):
+        data = self.file.get_data()
+        self.chart.create_pie_chart(data)
+
+    def create_line_chart(self):
+        data = self.file.get_data()
+        self.chart.create_line_graph(data)
 
 
 if __name__ == "__main__":

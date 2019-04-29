@@ -36,15 +36,25 @@ class ClassMaker:
                 the_relationship = RelationshipMaker(second_c_name,relationship_type)
                 self.all_my_relationships.append(the_relationship)
 
+    def get_attribute_length(self):
+        return len(self.all_my_attributes)
+
+    def get_method_length(self):
+        return len(self.all_my_methods)
+
     def print_class(self):
         result = "class " + self.name + ":"
-        result += "\n" + "    def __init__ (self):\n"
+        result += "\n" + "    def __init__(self"
         for x in self.all_my_attributes:
-            result += str(x) + "\n"
-        for x in self.all_my_relationships:
-            result += str(x) + "\n"
-        result += "\n"
-        for x in self.all_my_methods:
+            result += ", " + x.name
+        result += "):\n"
+        for x in self.all_my_attributes:
             result += str(x)
-        result += "\n\n"
+        for x in self.all_my_relationships:
+            result += str(x)
+        if self.get_attribute_length() == 0 and self.get_attribute_length() == 0:
+            result += "        pass\n"
+        for x in self.all_my_methods:
+            result +="\n"
+            result += str(x)
         return result
