@@ -10,21 +10,32 @@ class RelationshipMaker:
         self.dependency_list = []
 
     def identify_relationship_type(self):
-
+        self.relationship_type_dictionary()
         # if len(self.relationship_type) == 3:
-            if self.relationship_type == "*--":
-                self.compo_1_to_1.append(self.class_name)
-            if self.relationship_type == "o--":
-                self.aggr_1_to_1.append(self.class_name)
-            if self.relationship_type == "<--":
-                self.association_list.append(self.class_name)
-            if self.relationship_type == "<..":
-                self.dependency_list.append(self.class_name)
-        # elif len(self.relationship_type) > 3:
-            if self.relationship_type == '"1"*--"many"':
-                self.compo_1_to_many.append(self.class_name)
-            if self.relationship_type == '"1"o--"many"':
-                self.aggr_1_to_many.append(self.class_name)
+        #     if self.relationship_type == "*--":
+        #         self.compo_1_to_1.append(self.class_name)
+        #     if self.relationship_type == "o--":
+        #         self.aggr_1_to_1.append(self.class_name)
+        #     if self.relationship_type == "<--":
+        #         self.association_list.append(self.class_name)
+        #     if self.relationship_type == "<..":
+        #         self.dependency_list.append(self.class_name)
+        # # elif len(self.relationship_type) > 3:
+        #     if self.relationship_type == '"1"*--"many"':
+        #         self.compo_1_to_many.append(self.class_name)
+        #     if self.relationship_type == '"1"o--"many"':
+        #         self.aggr_1_to_many.append(self.class_name)
+
+    def relationship_type_dictionary(self):
+        dictionary = {"*--": "self.compo_1_to_1.append(self.class_name)",
+                      "o--": "self.aggr_1_to_1.append(self.class_name)",
+                      "<--": "self.association_list.append(self.class_name)",
+                      "<..": "self.dependency_list.append(self.class_name)",
+                      '"1"*--"many"': "self.compo_1_to_many.append(self.class_name)",
+                      '"1"o--"many"': "self.aggr_1_to_many.append(self.class_name)"}
+        key = self.relationship_type
+        if key in dictionary:
+            exec(dictionary[key])
 
     def __str__(self):
         self.identify_relationship_type()
