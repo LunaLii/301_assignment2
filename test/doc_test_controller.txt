@@ -1,9 +1,9 @@
 >>> from controller import Controller
 >>> Controller.load_file("C:\\Users\Luna\ICT\python\\uml.csv")
 Incorrect file type, please check with help load
->>> Controller.load_file("test/test.docx")
+>>> Controller.load_file("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test.docx")
 True
->>> Controller.load_file("test/test.txt")
+>>> Controller.load_file("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test.txt")
 True
 >>> Controller.load_file("C:\\Users\Luna\ICT\\uml.docx")
 File is not found

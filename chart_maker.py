@@ -1,22 +1,10 @@
 import matplotlib.pyplot as plt
-from class_maker import ClassMaker
 from file_reader import FileReader
 
 
 class ChartMaker:
     # Luna
     file_reader = FileReader()
-
-    # def get_data(self):
-    #
-    #     class_num = len(self.file_reader.all_my_classes)
-    #     attribute_num = 0
-    #     method_num = 0
-    #     for x in self.file_reader.all_my_classes:
-    #         attribute_num += x.get_attribute_length()
-    #         method_num += x.get_method_length()
-    #     data = [class_num, attribute_num, method_num]
-    #     return data
 
     def create_bar_chart(self, data):
         name_list = ["Class", "Attribute", "Method"]

@@ -20,8 +20,10 @@ class RelationshipMaker:
                       "o--": "self.aggr_1_to_1.append(self.class_name)",
                       "<--": "self.association_list.append(self.class_name)",
                       "<..": "self.dependency_list.append(self.class_name)",
-                      '"1"*--"many"': "self.compo_1_to_many.append(self.class_name)",
-                      '"1"o--"many"': "self.aggr_1_to_many.append(self.class_name)"}
+                      '"1"*--"many"': "self.compo_1_to_many.append"
+                                      "(self.class_name)",
+                      '"1"o--"many"': "self.aggr_1_to_many.append"
+                                      "(self.class_name)"}
         return dictionary
 
     def __str__(self):
@@ -30,10 +32,10 @@ class RelationshipMaker:
         if self.compo_1_to_1 is not None:
             for i in self.compo_1_to_1:
                 result += "        # self. my_" + i.lower() + " -> " + i\
-                        + "\n" + "        self." + i.lower() + " = " + "None \n"
+                        + "\n" + "        self." + i.lower() + " = " + "None\n"
         if self.compo_1_to_many is not None:
             for i in self.compo_1_to_many:
-                result += "        # self. my_" + i.lower() + ": list" + " -> "\
-                          + i + "\n" + "        self." + i.lower() + " = "\
-                          + "None\n"
-        return  result
+                result += "        # self. my_" + i.lower() + ": list" + \
+                          " -> " + i + "\n" + "        self." + i.lower() \
+                          + " = " + "None\n"
+        return result

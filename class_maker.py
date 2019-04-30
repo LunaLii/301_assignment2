@@ -4,11 +4,11 @@ from relationship_maker import RelationshipMaker
 
 
 class ClassMaker:
-    def __init__(self, class_name, new_attributes, new_methods, new_relationships):
+    def __init__(self, class_name, new_attributes, new_methods, new_r):
         self.name = class_name
         self.attributes = new_attributes
         self.methods = new_methods
-        self.relationships = new_relationships
+        self.relationships = new_r
         self.all_my_attributes_name = []
         self.all_my_attributes = []
         self.all_my_methods = []
@@ -30,10 +30,10 @@ class ClassMaker:
         for a_relationship in self.relationships:
             temp_relationship = a_relationship.split(" ")
             first_c_name = temp_relationship[0]
-            second_c_name = temp_relationship[-1].replace("\n","")
-            relationship_type = ''.join(temp_relationship[1:-1])
+            second_c_name = temp_relationship[-1].replace("\n", "")
+            r_type = ''.join(temp_relationship[1:-1])
             if first_c_name == self.name:
-                the_relationship = RelationshipMaker(second_c_name,relationship_type)
+                the_relationship = RelationshipMaker(second_c_name, r_type)
                 self.all_my_relationships.append(the_relationship)
 
     def get_attribute_length(self):
@@ -52,7 +52,7 @@ class ClassMaker:
             result += str(x)
         for x in self.all_my_relationships:
             result += str(x)
-        if self.get_attribute_length() == 0 and self.get_attribute_length() == 0:
+        if self.get_attribute_length() == 0:
             result += "        pass\n"
         for x in self.all_my_methods:
             result += "\n"

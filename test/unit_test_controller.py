@@ -7,11 +7,11 @@ class ControllerUnitTest(unittest.TestCase):
         self.controller = Controller()
 
     def test_load_word_file(self):
-        actual = self.controller.load_file("test/test2.docx")
+        actual = self.controller.load_file("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test2.docx")
         self.assertTrue(actual, "cannot load word file")
 
     def test_load_txt_file(self):
-        actual = self.controller.load_file("test/test2.txt")
+        actual = self.controller.load_file("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test2.txt")
         self.assertTrue(actual, "cannot load txt file")
 
     def test_load_file_not_found_exception(self):
@@ -19,7 +19,7 @@ class ControllerUnitTest(unittest.TestCase):
         self.assertRaises(FileNotFoundError, actual)
 
     def test_load_incorrect_file_exception(self):
-        actual = self.controller.load_file("test/test2.csv")
+        actual = self.controller.load_file("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test2.csv")
         self.assertRaises(NameError, actual)
 
     # def test_get_correct_data_for_chart(self):
