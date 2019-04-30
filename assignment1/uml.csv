@@ -1,0 +1,17 @@
+@startuml
+Zoo "1" *-- "many" Animal
+
+class Zoo {
+    name : String
+    location : String
+    allMyAnimals : List[Animal]
+    add_animal()
+    get_animal()
+}
+
+class Animal {
+    name : String
+    number : Integer
+    __str__()
+}
+@enduml

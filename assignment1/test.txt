@@ -1,0 +1,9 @@
+@startuml
+ToyBox *-- Toy
+
+class ToyBox {
+}
+
+class Toy {
+}
+@enduml

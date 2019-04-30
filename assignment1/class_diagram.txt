@@ -1,0 +1,59 @@
+@startuml
+Controller <-- Command
+PrintClass <.. Controller
+ChartMaker <.. Controller
+Validator <-- PrintClass
+
+class PrintClass {
+    relationship_list : List
+    class_name_list : List
+    num_all_attribute_list : List
+    num_all_method_list : List 
+    compo_1_to_1 : List
+    aggr_1_to_1 : List
+    compo_1_to_many : List
+    aggr_1_to_many : List
+    association_list : List
+    dependency_list : List
+    class_list : List
+    read_word_file()
+    read_txt_file()
+    class_handler()
+    get_class_name()
+    get_attributes()
+    get_methods()
+    get_relationship()
+    identify_r_type()
+    output_class()
+    output_classes()
+    get_all_num()
+}
+
+class ChartMaker {
+    create_bar_chart()
+    create_pie_chart()
+    create_line_graph()
+}
+
+class Validator {
+    validate_class_name()
+    validate_attribute_name()
+    validate_method_name()
+}
+
+class Command {
+    prompt : String
+    my_name : String
+    do_load()
+    do_create_class_files()
+    do_display()
+    do_quit()
+}
+
+class Controller {
+    load_file()
+    save_file()
+    create_bar_chart()
+    create_pie_chart()
+    create_line_chart()
+@enduml
