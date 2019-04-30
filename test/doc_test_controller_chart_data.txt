@@ -1,0 +1,5 @@
+>>> from controller import Controller
+>>> Controller.load_file("test/uml.docx")
+True
+>>> Controller.get_chart_data()
+[2, 5, 3]

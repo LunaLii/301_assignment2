@@ -55,6 +55,6 @@ class ClassMaker:
         if self.get_attribute_length() == 0 and self.get_attribute_length() == 0:
             result += "        pass\n"
         for x in self.all_my_methods:
-            result +="\n"
+            result += "\n"
             result += str(x)
         return result

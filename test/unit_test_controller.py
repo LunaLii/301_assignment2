@@ -21,3 +21,9 @@ class ControllerUnitTest(unittest.TestCase):
     def test_load_incorrect_file_exception(self):
         actual = self.controller.load_file("test/test2.csv")
         self.assertRaises(NameError, actual)
+
+    # def test_get_correct_data_for_chart(self):
+    #     self.controller.load_file("test/uml.txt")
+    #     actual = len(self.controller.file.all_my_classes)
+    #     expected = 2
+    #     self.assertEqual(expected, actual, "cannot get the data")

@@ -6,6 +6,7 @@ from test.unit_test_controller import ControllerUnitTest
 
 def doc_test():
     import doctest
+    doctest.testfile("test/doc_test_controller_chart_data.txt", verbose=1)
     doctest.testfile("test/doc_test_controller.txt", verbose=1)
     doctest.testfile("test/doc_test_validator.txt", verbose=1)
 

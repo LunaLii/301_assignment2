@@ -40,19 +40,30 @@ class Controller:
         except Exception as e:
             print(e)
 
+    @staticmethod
+    def get_chart_data():
+        class_num = len(Controller.file.all_my_classes)
+        attribute_num = 0
+        method_num = 0
+        for x in Controller.file.all_my_classes:
+            attribute_num += x.get_attribute_length()
+            method_num += x.get_method_length()
+        data = [class_num, attribute_num, method_num]
+        return data
+
     def create_bar_chart(self):
-        data = self.file.get_data()
-        if self.file.get_data() == [0, 0, 0]:
+        data = self.get_chart_data()
+        if data == [0, 0, 0]:
             return False
         else:
             self.chart.create_bar_chart(data)
 
     def create_pie_chart(self):
-        data = self.file.get_data()
+        data = self.get_chart_data()
         self.chart.create_pie_chart(data)
 
     def create_line_chart(self):
-        data = self.file.get_data()
+        data = self.get_chart_data()
         self.chart.create_line_graph(data)
 
 

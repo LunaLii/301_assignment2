@@ -127,9 +127,4 @@ class FilerUnitTest(unittest.TestCase):
         expected = [["Command"]]
         self.assertEqual(expected, actual, "cannot get association")
 
-    def test_get_correct_data_for_chart(self):
-        self.file.class_handler("test/uml.docx")
-        self.file.find_classes()
-        actual = self.file.get_data()
-        expected = [2, 5, 3]
-        self.assertEqual(expected, actual, "cannot get the data")
+

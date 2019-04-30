@@ -99,16 +99,6 @@ class FileReader:
                 with open(file_name, "w") as output:
                     output.write(x.print_class())
 
-    def get_data(self):
-        class_num = len(self.all_my_classes)
-        attribute_num = 0
-        method_num = 0
-        for x in self.all_my_classes:
-            attribute_num += x.get_attribute_length()
-            method_num += x.get_method_length()
-        data = [class_num, attribute_num, method_num]
-        return data
-
 # c = FileReader()
 # c.class_handler("test\\uml.txt")
 # c.find_classes()
