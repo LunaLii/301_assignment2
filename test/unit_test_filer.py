@@ -7,21 +7,27 @@ class FilerUnitTest(unittest.TestCase):
         self.file = FileReader()
 
     def test_read_word_file(self):
-        actual = self.file.read_word_file("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test2.docx")
+        actual = self.file.read_word_file("C:\\Users\\Luna\\"
+                                          "PycharmProjects\\"
+                                          "assignment2_refactoring"
+                                          "\\test\\test2.docx")
         expect = ["@startuml\n", "ToyBox *-- Toy\n", "\n", "class ToyBox {\n",
                   "    name : String\n", "}\n", "\n", "class Toy {\n", "}\n",
                   "@enduml\n"]
         self.assertEqual(expect, actual, "cannot read word file")
 
     def test_read_txt_file(self):
-        actual = self.file.read_txt_file("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test2.txt")
+        actual = self.file.read_txt_file("C:\\Users\\Luna\\PycharmProjects\\"
+                                         "assignment2_refactoring"
+                                         "\\test\\test2.txt")
         expect = ["@startuml\n", "ToyBox *-- Toy\n", "\n", "class ToyBox {\n",
                   "    name : String\n", "}\n", "\n", "class Toy {\n", "}\n",
                   "@enduml\n"]
         self.assertEqual(expect, actual, "cannot read txt file")
 
     def test_get_method_name(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\uml.docx")
+        self.file.class_handler("C:\\Users\\Luna\\PycharmProjects"
+                                "\\assignment2_refactoring\\test\\uml.docx")
         self.file.find_classes()
         actual_one = []
         class_one = self.file.all_my_classes[0]
@@ -37,7 +43,8 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected_two, actual_two, "cannot get method name")
 
     def test_get_class_name(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\uml.docx")
+        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\"
+                                "assignment2_refactoring\\test\\uml.docx")
         self.file.find_classes()
         actual = []
         for x in self.file.all_my_classes:
@@ -46,7 +53,8 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected, actual, "cannot get class name")
 
     def test_get_attribute_name(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\uml.docx")
+        self.file.class_handler("C:\\Users\\Luna\\PycharmProjects\\"
+                                "assignment2_refactoring\\test\\uml.docx")
         self.file.find_classes()
         actual_one = []
         class_one = self.file.all_my_classes[0]
@@ -62,7 +70,9 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected_two, actual_two, "cannot get attribute name")
 
     def test_get_relationship_one_composition(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test_relationship.txt")
+        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\"
+                                "assignment2_refactoring\\test\\"
+                                "test_relationship.txt")
         self.file.find_classes()
         class_two = self.file.all_my_classes[1]
         actual = []
@@ -73,7 +83,9 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected, actual, "cannot get 1 to 1 composition")
 
     def test_get_relationship_many_composition(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test_relationship.txt")
+        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\"
+                                "assignment2_refactoring\\test\\"
+                                "test_relationship.txt")
         self.file.find_classes()
         class_two = self.file.all_my_classes[1]
         actual = []
@@ -84,7 +96,9 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected, actual, "cannot get 1 to many composition")
 
     def test_get_relationship_many_aggregation(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test_relationship.txt")
+        self.file.class_handler("C:\\Users\\Luna\\PycharmProjects\\"
+                                "assignment2_refactoring\\test\\"
+                                "test_relationship.txt")
         self.file.find_classes()
         class_two = self.file.all_my_classes[1]
         actual = []
@@ -95,7 +109,9 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected, actual, "cannot get 1 to many aggregation")
 
     def test_get_relationship_one_aggregation(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test_relationship.txt")
+        self.file.class_handler("C:\\Users\\Luna\\PycharmProjects"
+                                "\\assignment2_refactoring\\test"
+                                "\\test_relationship.txt")
         self.file.find_classes()
         class_two = self.file.all_my_classes[1]
         actual = []
@@ -106,7 +122,9 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected, actual, "cannot get 1 to 1 aggregation")
 
     def test_get_relationship_dependency(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test_relationship.txt")
+        self.file.class_handler("C:\\Users\Luna\PycharmProjects"
+                                "\\assignment2_refactoring\\test"
+                                "\\test_relationship.txt")
         self.file.find_classes()
         class_two = self.file.all_my_classes[1]
         actual = []
@@ -117,7 +135,9 @@ class FilerUnitTest(unittest.TestCase):
         self.assertEqual(expected, actual, "cannot get dependency")
 
     def test_get_relationship_association(self):
-        self.file.class_handler("C:\\Users\Luna\PycharmProjects\\assignment2_refactoring\\test\\test_relationship.txt")
+        self.file.class_handler("C:\\Users\\Luna\\PycharmProjects"
+                                "\\assignment2_refactoring\\test"
+                                "\\test_relationship.txt")
         self.file.find_classes()
         class_one = self.file.all_my_classes[0]
         actual = []
@@ -126,5 +146,3 @@ class FilerUnitTest(unittest.TestCase):
             actual.append(i.association_list)
         expected = [["Command"]]
         self.assertEqual(expected, actual, "cannot get association")
-
-
